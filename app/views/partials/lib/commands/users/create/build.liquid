@@ -3,6 +3,8 @@
     "email":       {{ object.email | json }},
     "password":    {{ object.password | json }},
     "username":    {{ object.username | json }},
+    "wishlist_ids": {{ object.wishlist_ids | escape }},
+    "favorite_sellers_ids": {{ object.favorite_sellers_ids  | escape }},
     "remember_me": true
   }
 {% endparse_json %}

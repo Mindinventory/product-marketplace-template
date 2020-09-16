@@ -13,3 +13,43 @@ if (gallery) {
     console.log('Gallery module loaded.');
   });
 }
+
+const favoriteSeller = document.querySelector('[data-type="favorite_seller"]');
+favoriteSeller.addEventListener("click", event => {
+  event.preventDefault();
+  const id = event.target.getAttribute('data-id');
+
+  fetch('/api/favseller', {
+    method: 'POST',
+    headers: {
+      "Content-Type": 'application/json',
+      "Accept": 'application/json',
+    },
+    body: JSON.stringify({
+      "id": id,
+      "authenticity_token": document.getElementsByName('authenticity_token')[0].value
+    })
+  }).then((response) => {
+    window.location.reload()
+  });
+})
+
+const wishlist = document.querySelector('[data-type="wishlist"]');
+wishlist.addEventListener("click", event => {
+  event.preventDefault();
+  const id = event.target.getAttribute('data-id');
+
+  fetch('/api/wishlist', {
+    method: 'POST',
+    headers: {
+      "Content-Type": 'application/json',
+      "Accept": 'application/json',
+    },
+    body: JSON.stringify({
+      "id": id,
+      "authenticity_token": document.getElementsByName('authenticity_token')[0].value
+    })
+  }).then((response) => {
+    window.location.reload()
+  });
+})

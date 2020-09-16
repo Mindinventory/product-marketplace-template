@@ -13,6 +13,8 @@ query users($id: ID, $email: String, $limit: Int = 1, $valid_for: Int = 1, $with
       email
       created_at
       username: property(name: "username")
+      wishlist_ids: property(name: "wishlist_ids")
+      favorite_sellers_ids: property(name: "favorite_sellers_ids")
       token: temporary_token(valid_for: $valid_for) @include(if: $with_token)
     }
   }

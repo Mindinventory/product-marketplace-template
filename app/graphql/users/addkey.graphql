@@ -1,0 +1,13 @@
+mutation addkey($id: ID!, $key: String!, $value: String) {
+  user: user_update(
+    id: $id
+    user: {
+      properties: [
+        { name: $key, array_append: $value }
+      ]
+    }
+  ){
+    id
+    property_array(name: $key)
+  }
+}

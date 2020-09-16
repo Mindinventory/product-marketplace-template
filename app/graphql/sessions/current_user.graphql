@@ -2,5 +2,8 @@ query{
   user: current_user{
     email
     id
+    username: property(name: "username")
+    wishlist_ids: property(name: "wishlist_ids")
+    favorite_sellers_ids: property(name: "favorite_sellers_ids")
   }
 }

@@ -1,0 +1,15 @@
+---
+slug: api/wishlist
+method: post
+---
+{% liquid
+  include 'lib/must_be_authenticated'
+  graphql u = 'sessions/current_user'
+  function_rc user = 'lib/commands/users/create/build', object: u.user
+  assign isWishlist = user.wishlist_ids | is_included_in_array: context.params.id
+  if isWishlist
+    graphql r = 'users/removekey', id: u.user.id, key: "wishlist_ids", value: context.params.id
+  else
+   graphql r = 'users/addkey', id: u.user.id, key: "wishlist_ids", value: context.params.id
+  endif
+%}

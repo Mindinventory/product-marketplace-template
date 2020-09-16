@@ -1,0 +1,13 @@
+mutation removekey($id: ID!, $key: String!, $value: String) {
+  user: user_update(
+    id: $id
+    user: {
+      properties: [
+        { name: $key, array_remove: $value }
+      ]
+    }
+  ){
+    id
+    property_array(name: $key)
+  }
+}

@@ -1,6 +1,15 @@
 {% liquid
   function_rc query = 'lib/data/queries/items/search/build', limit: limit, owner: owner
   function_rc items = 'lib/data/queries/items/search/execute', query: query
-
+  graphql u = 'sessions/current_user'
+  function_rc user = 'lib/commands/users/create/build', object: u.user
+  log u, type: 'users'
+  for item in items.results
+    assign isWishList = user.wishlist_ids | is_included_in_array: item.id
+    assign isFavoriteSellers = user.favorite_sellers_ids | is_included_in_array: item.owner.id
+    assign item = item | add_hash_key: "isWishlist", isWishList
+    assign item = item | add_hash_key: "isFavoriteSellers", isFavoriteSellers
+  endfor
+  log items, type: 'items'
   return_rc items
 %}

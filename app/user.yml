@@ -1,5 +1,11 @@
 properties:
   - name: username
+  - name: wishlist_ids
+    type: array
+    belongs_to: item
+  - name: favorite_sellers_ids
+    type: array
+    belongs_to: user
   - name: photo
     type: upload
     image_versions:

@@ -37,4 +37,21 @@
       </h3>
     </div>
   </div>
+  {% include 'authenticity_token' %}
+  <div class="container-fluid row no-gutters">
+    <div class="col float-left m-2 ml-0">
+      {% if item.isFavoriteSellers %}
+        <button class="button bg-red-900" data-type="favorite_seller" data-id="{{ item.owner.id }}">Un-Favorite Seller</button>
+      {% else %}
+        <button class="button bg-blue-900" data-type="favorite_seller" data-id="{{ item.owner.id }}">Favorite Seller</button>
+      {% endif %}
+    </div>
+    <div class="col float-left m-2 ml-0">
+      {% if item.isWishlist %}
+        <button class="button bg-red-900" data-type="wishlist" data-id="{{ item.id }}">Remove From Wishlist</button>
+      {% else %}
+        <button class="button bg-blue-900" data-type="wishlist" data-id="{{ item.id }}">Add To Wishlist</button>
+      {% endif %}
+    </div>
+  </div>
 </div>
