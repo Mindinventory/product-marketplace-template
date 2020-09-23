@@ -38,6 +38,7 @@
     </div>
   </div>
   {% include 'authenticity_token' %}
+  {% if context.current_user.id  %}
   <div class="container-fluid row no-gutters">
     <div class="col float-left m-2 ml-0">
       {% if item.isFavoriteSellers %}
@@ -54,4 +55,5 @@
       {% endif %}
     </div>
   </div>
+  {% endif %}
 </div>
