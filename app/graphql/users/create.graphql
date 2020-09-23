@@ -1,4 +1,4 @@
-mutation create_user($email: String!, $password: String!, $username: String!, $wishlistIds: [String], $favoriteSellersIds: [String]) {
+mutation create_user($email: String!, $password: String!, $username: String!, $wishlistIds: [String], $favoriteSellersIds: [String], $savedSearch: [String]) {
   user: user_create(
     user: {
       email: $email
@@ -7,6 +7,7 @@ mutation create_user($email: String!, $password: String!, $username: String!, $w
         { name: "username", value: $username },
         { name: "wishlist_ids", value_array: $wishlistIds },
         { name: "favorite_sellers_ids", value_array: $favoriteSellersIds }
+        { name: "saved_search", value_array: $savedSearch }
       ]
     }
   ){

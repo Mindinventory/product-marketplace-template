@@ -6,6 +6,8 @@ properties:
   - name: favorite_sellers_ids
     type: array
     belongs_to: user
+  - name: saved_search
+    type: array
   - name: photo
     type: upload
     image_versions:
