@@ -33,7 +33,9 @@
     </select>
   </div>
 
+  {% if context.current_user.id  %}
   <button name="submit" value="save_search" class="w-full md:mt-auto md:w-auto button bg-green-300">{{ 'app.search.save_search' | t  }}</button>
+  {% endif %}
   <button name="submit" value="search" class="w-full md:mt-auto md:w-auto button">{{ 'app.search.search' | t  }}</button>
 </div>
 
